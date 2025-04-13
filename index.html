@@ -49,23 +49,6 @@
       font-weight: bold;
       cursor: pointer;
     }
-    .signup-box {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .signup-box a {
-      text-decoration: none;
-      color: #0066c0;
-      font-size: 14px;
-    }
-    .signup-box a:hover {
-      text-decoration: underline;
-    }
-    .note {
-      font-size: 12px;
-      color: #555;
-      margin-top: 10px;
-    }
   </style>
 </head>
 <body>
@@ -85,22 +68,14 @@
 
       <button class="signin-btn" type="submit">Sign-In</button>
     </form>
-
-    <p class="note">By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
-  </div>
-
-  <div class="signup-box">
-    <p>New to Amazon?</p>
-    <a href="#">Create your Amazon account</a>
   </div>
 
   <script>
     function handleLogin(e) {
       e.preventDefault();
-
-      // Always login successful
-      alert("✅ Login successful!");
-      window.location.href = 'home.html';
+      const email = document.getElementById('email').value.trim();
+      localStorage.setItem("userEmail", email);
+      window.location.href = "home.html";
     }
   </script>
 
