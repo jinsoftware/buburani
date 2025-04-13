@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gift Card Selection</title>
   <style>
     body {
@@ -12,14 +12,23 @@
     }
     header {
       background-color: #232f3e;
-      padding: 10px 20px;
+      padding: 10px 30px;
       color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     header img {
-      height: 30px;
+      height: 36px;
+    }
+    header nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    header nav a:hover {
+      text-decoration: underline;
     }
     .search-bar {
       margin: 20px auto;
@@ -73,7 +82,13 @@
 
   <header>
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-    <span>Gift Card Center</span>
+    <nav>
+      <a href="#">Today's Deals</a>
+      <a href="#">Customer Service</a>
+      <a href="#">Gift Cards</a>
+      <a href="#">Registry</a>
+      <a href="#">Sell</a>
+    </nav>
   </header>
 
   <div class="search-bar">
@@ -90,16 +105,21 @@
 
   <script>
     const giftCards = [
-      { name: "Amazon", desc: "Redeem on Amazon.com for millions of items.", img: "https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo-768x480.png" },
+      { name: "Amazon", desc: "Redeem on Amazon.com for millions of items.", img: "https://images.ctfassets.net/4f3rgqwzdznj/7sChhr0tN9Uz6efmsh2Y9t/cd78540db1f0e2d2502ae30d2b0ac485/amazon-card.png" },
       { name: "Walmart", desc: "Valid at Walmart stores and online.", img: "https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" },
-      { name: "Target", desc: "Shop at Target stores and website.", img: "https://logos-world.net/wp-content/uploads/2020/11/Target-Logo.png" },
-      { name: "Apple", desc: "Use on App Store, iTunes, and Apple Store.", img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
-      { name: "Google Play", desc: "For Android apps, games, and subscriptions.", img: "https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" },
-      { name: "Steam", desc: "Redeem for PC games on Steam platform.", img: "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" },
-      { name: "Best Buy", desc: "Electronics and tech items at Best Buy.", img: "https://1000logos.net/wp-content/uploads/2021/05/Best-Buy-logo.png" },
-      { name: "eBay", desc: "Use to shop across eBay marketplace.", img: "https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" },
-      { name: "Home Depot", desc: "For home improvement items and tools.", img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/TheHomeDepot.svg" },
-      { name: "Lowe's", desc: "Buy appliances, tools, and more.", img: "https://upload.wikimedia.org/wikipedia/commons/3/32/Lowe%27s_logo.svg" },
+      { name: "Target", desc: "Shop at Target stores and website.", img: "https://www.thetargettest.com/assets/images/gift-card.png" },
+      { name: "Apple", desc: "Use on App Store, iTunes, and Apple Store.", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/apple-gift-card-202108_FMT_WHH?wid=400&hei=400&fmt=jpeg&qlt=95&.v=1626375547000" },
+      { name: "Google Play", desc: "For Android apps, games, and subscriptions.", img: "https://www.google.com/intl/en_in/googleplay/giftcards/static/images/en_us-no-value.png" },
+      { name: "Steam", desc: "Redeem for PC games on Steam platform.", img: "https://cdn.cloudflare.steamstatic.com/store/home/store_home_share.jpg" },
+      { name: "Best Buy", desc: "Electronics and tech items at Best Buy.", img: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4569/4569400_sd.jpg" },
+      { name: "eBay", desc: "Use to shop across eBay marketplace.", img: "https://i.ebayimg.com/images/g/zf4AAOSwU-pkAKYh/s-l1600.jpg" },
+      { name: "Home Depot", desc: "For home improvement items and tools.", img: "https://www.homedepot.com/l/GiftCards/images/gift_card.png" },
+      { name: "Lowe's", desc: "Buy appliances, tools, and more.", img: "https://mobileimages.lowes.com/productimages/8b3a5dd1-057c-470e-a9bc-648c75f5e39e/42589142.jpg" },
+      { name: "Nike", desc: "Redeem at Nike.com and Nike stores.", img: "https://www.nike.com/assets/giftcard/Nike-GiftCard.jpg" },
+      { name: "PlayStation", desc: "Get games and content from PS Store.", img: "https://image.api.playstation.com/vulcan/img/cfn/11307_SvG3yA2g3z0UZTqfuRWKp8sOS3HJx1dbTqkJq4zISkNqLkgkwjQQI19_zZAJToZRKkBXZAYoNmAGlzmZaEcKAl0PdkFiB8MHw.png" },
+      { name: "Netflix", desc: "Pay for Netflix subscriptions.", img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+      { name: "Starbucks", desc: "Get coffee and snacks from Starbucks.", img: "https://m.media-amazon.com/images/I/51MxHRIiACL.jpg" },
+      { name: "Spotify", desc: "Gift Spotify Premium subscription.", img: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" },
     ];
 
     const cardGrid = document.getElementById("cardGrid");
