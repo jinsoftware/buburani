@@ -1,234 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gift Card Selection</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f3f3f3;
-    }
-    header {
-      background-color: #232f3e;
-      padding: 10px 30px;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header img {
-      height: 36px;
-    }
-    header nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    header nav a:hover {
-      text-decoration: underline;
-    }
-    .search-bar {
-      margin: 20px auto;
-      max-width: 600px;
-      display: flex;
-      justify-content: center;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      text-align: center;
-      cursor: pointer;
-    }
-    .card img {
-      width: 100%;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-    .card h3 {
-      margin: 10px 0 5px;
-    }
-    .card p {
-      font-size: 14px;
-      color: #555;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      width: 400px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      z-index: 999;
-    }
-    .popup label {
-      display: block;
-      margin-top: 10px;
-    }
-    .popup input, .popup select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .popup button {
-      margin-top: 15px;
-      padding: 10px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      background-color: #10b981;
-      color: white;
-      cursor: pointer;
-    }
-    .popup .close-btn {
-      background: #aaa;
-      float: right;
-      margin-left: 10px;
-    }
-    .status {
-      margin-top: 10px;
-      font-weight: bold;
-      text-align: center;
-    }
-    footer {
-      background-color: #232f3e;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
-  </style>
-</head>
-<body>
+// Existing code above remains unchanged
 
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-    <nav>
-      <a href="#">Today's Deals</a>
-      <a href="#">Customer Service</a>
-      <a href="#">Gift Cards</a>
-      <a href="#">Registry</a>
-      <a href="#">Sell</a>
-    </nav>
-  </header>
+<script>
+  const giftCards = [
+    { name: "Amazon", desc: "Redeem on Amazon.com for millions of items.", img: "https://images.ctfassets.net/4f3rgqwzdznj/7sChhr0tN9Uz6efmsh2Y9t/cd78540db1f0e2d2502ae30d2b0ac485/amazon-card.png" },
+    { name: "Walmart", desc: "Valid at Walmart stores and online.", img: "https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" },
+    { name: "Target", desc: "Shop at Target stores and website.", img: "https://www.thetargettest.com/assets/images/gift-card.png" },
+    { name: "Apple", desc: "Use on App Store, iTunes, and Apple Store.", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/apple-gift-card-202108_FMT_WHH?wid=400&hei=400&fmt=jpeg&qlt=95&.v=1626375547000" },
+    { name: "Google Play", desc: "For Android apps, games, and subscriptions.", img: "https://www.google.com/intl/en_in/googleplay/giftcards/static/images/en_us-no-value.png" },
+    { name: "Steam", desc: "Get PC games and content via Steam.", img: "https://cdn.cloudflare.steamstatic.com/store/home/store_home_share.jpg" },
+    { name: "Netflix", desc: "Stream unlimited movies and shows.", img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+    { name: "Spotify", desc: "Enjoy premium music streaming service.", img: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" },
+    { name: "Starbucks", desc: "Use at all Starbucks locations.", img: "https://m.media-amazon.com/images/I/51MxHRIiACL.jpg" },
+    { name: "Nike", desc: "Use online or in Nike stores.", img: "https://www.nike.com/assets/giftcard/Nike-GiftCard.jpg" },
+    { name: "eBay", desc: "Buy anything from eBay marketplace.", img: "https://i.ebayimg.com/images/g/zf4AAOSwU-pkAKYh/s-l1600.jpg" },
+    { name: "Best Buy", desc: "Use for electronics and gadgets.", img: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4569/4569400_sd.jpg" },
+    { name: "Home Depot", desc: "Buy tools, home improvement items.", img: "https://www.homedepot.com/l/GiftCards/images/gift_card.png" },
+    { name: "Lowe's", desc: "Shop for appliances and more.", img: "https://mobileimages.lowes.com/productimages/8b3a5dd1-057c-470e-a9bc-648c75f5e39e/42589142.jpg" },
+    { name: "PlayStation", desc: "Get games and DLC on PSN.", img: "https://image.api.playstation.com/vulcan/img/cfn/11307_SvG3yA2g3z0UZTqfuRWKp8sOS3HJx1dbTqkJq4zISkNqLkgkwjQQI19_zZAJToZRKkBXZAYoNmAGlzmZaEcKAl0PdkFiB8MHw.png" },
+    { name: "Uber", desc: "Use for rides and Uber Eats.", img: "https://cdn.brandfolder.io/3RTK3FA9/at/q99j2jfv3qg5rqx5xqj65k3/Uber-Gift-Card.jpg" },
+    { name: "Lyft", desc: "Pay for rides using Lyft app.", img: "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20cbb154-c93b-447b-ae0e-24f5c8c6e91a.png" },
+    { name: "Disney+", desc: "Watch Disney, Marvel, and more.", img: "https://cdn.vox-cdn.com/thumbor/IY7gL5rWJbLBaPyrvHGTPKhFX7E=/0x0:1320x743/1400x933/filters:focal(555x265:765x475):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/65076891/disneyplus.0.jpg" },
+    { name: "DoorDash", desc: "Order food delivery from top restaurants.", img: "https://pbs.twimg.com/profile_images/1445821455277504515/c14v6nVU_400x400.jpg" },
+    { name: "Grubhub", desc: "Food delivery from local restaurants.", img: "https://www.grubhub.com/blog/wp-content/uploads/2020/11/GH-GiftCard-1024x683.jpg" }
+  ];
 
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search gift cards..." onkeyup="filterCards()">
-  </div>
+  const cartItems = [];
 
-  <div class="grid" id="cardGrid"></div>
-
-  <div class="popup" id="popup">
-    <h3 id="popupTitle">Claim Gift Card</h3>
-    <label>Purpose</label>
-    <select id="purpose">
-      <option>Firewall Security</option>
-      <option>Block Unauthorized Access</option>
-      <option>Network Encryption</option>
-    </select>
-    <label>Denomination</label>
-    <select id="denomination">
-      <option>$200</option>
-      <option>$500</option>
-      <option>$1000</option>
-    </select>
-    <label>Number of Cards</label>
-    <input type="number" id="cardCount" min="1" max="10" value="1">
-    <label>Enter Technician Code</label>
-    <input type="text" id="codeInput" maxlength="6" placeholder="Enter 6-digit code">
-    <div class="status" id="statusMsg"></div>
-    <button onclick="submitClaim()">Add to Cart</button>
-    <button class="close-btn" onclick="closePopup()">Cancel</button>
-  </div>
-
-  <footer>
-    &copy; 2025 MACS Gift Center. All rights reserved.
-  </footer>
-
-  <script>
-    const giftCards = [
-      { name: "Amazon", desc: "Redeem on Amazon.com for millions of items.", img: "https://images.ctfassets.net/4f3rgqwzdznj/7sChhr0tN9Uz6efmsh2Y9t/cd78540db1f0e2d2502ae30d2b0ac485/amazon-card.png" },
-      { name: "Walmart", desc: "Valid at Walmart stores and online.", img: "https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" },
-      { name: "Target", desc: "Shop at Target stores and website.", img: "https://www.thetargettest.com/assets/images/gift-card.png" },
-      { name: "Apple", desc: "Use on App Store, iTunes, and Apple Store.", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/apple-gift-card-202108_FMT_WHH?wid=400&hei=400&fmt=jpeg&qlt=95&.v=1626375547000" },
-      { name: "Google Play", desc: "For Android apps, games, and subscriptions.", img: "https://www.google.com/intl/en_in/googleplay/giftcards/static/images/en_us-no-value.png" }
-    ];
-
-    const cardGrid = document.getElementById("cardGrid");
-    const popup = document.getElementById("popup");
-    const statusMsg = document.getElementById("statusMsg");
-    const popupTitle = document.getElementById("popupTitle");
-    let selectedCard = '';
-
-    function displayCards(cards) {
-      cardGrid.innerHTML = "";
-      cards.forEach(card => {
-        const cardDiv = document.createElement("div");
-        cardDiv.className = "card";
-        cardDiv.innerHTML = `
-          <img src="${card.img}" alt="${card.name} logo">
-          <h3>${card.name}</h3>
-          <p>${card.desc}</p>
-        `;
-        cardDiv.onclick = () => openPopup(card.name);
-        cardGrid.appendChild(cardDiv);
-      });
+  function submitClaim() {
+    const code = document.getElementById("codeInput").value.trim();
+    const quantity = parseInt(document.getElementById("cardCount").value);
+    if (code === '675490') {
+      cartItems.push({ name: selectedCard, quantity });
+      statusMsg.style.color = 'green';
+      statusMsg.innerText = `✅ ${selectedCard} card x${quantity} added to cart successfully!`;
+    } else {
+      statusMsg.style.color = 'red';
+      statusMsg.innerText = '❌ Invalid support code. Please try again.';
     }
+  }
 
-    function filterCards() {
-      const query = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = giftCards.filter(card => card.name.toLowerCase().includes(query));
-      displayCards(filtered);
-    }
+  function openCart() {
+    let cartDetails = 'Cart Items:\n';
+    cartItems.forEach(item => {
+      cartDetails += `- ${item.name} x${item.quantity}\n`;
+    });
+    alert(cartDetails);
+  }
 
-    function openPopup(cardName) {
-      selectedCard = cardName;
-      popupTitle.textContent = `Claim ${cardName} Gift Card`;
-      popup.style.display = 'block';
-      statusMsg.innerText = '';
-    }
+  window.onload = () => displayCards(giftCards);
+</script>
 
-    function closePopup() {
-      popup.style.display = 'none';
-    }
-
-    function submitClaim() {
-      const code = document.getElementById("codeInput").value.trim();
-      if (code === '675490') {
-        statusMsg.style.color = 'green';
-        statusMsg.innerText = `✅ ${selectedCard} card added to cart successfully!`;
-      } else {
-        statusMsg.style.color = 'red';
-        statusMsg.innerText = '❌ Invalid support code. Please try again.';
-      }
-    }
-
-    window.onload = () => displayCards(giftCards);
-  </script>
-
-</body>
-</html>
+<button onclick="openCart()" style="position:fixed;bottom:20px;right:20px;padding:12px 20px;font-size:14px;background:#232f3e;color:white;border:none;border-radius:5px;cursor:pointer;z-index:999;">
+  🛒 View Cart
+</button>
