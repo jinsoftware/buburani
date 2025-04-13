@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Claim Your Gift Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .card {
+      width: 200px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+    .popup h2 {
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .close-btn, .submit-btn {
+      margin-top: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close-btn {
+      background: #999;
+      color: white;
+      float: left;
+    }
+    .submit-btn {
+      background: #28a745;
+      color: white;
+      float: right;
+    }
+    .status {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Claim Your Gift Card</h1>
+
+  <div class="card-container">
+    <div class="card" onclick="openPopup('Target')">
+      <img src="https://1000logos.net/wp-content/uploads/2017/06/Target-Logo.png" alt="Target">
+      <p><strong>Target Gift Card</strong></p>
+    </div>
+    <div class="card" onclick="openPopup('Walmart')">
+      <img src="https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" alt="Walmart">
+      <p><strong>Walmart Gift Card</strong></p>
+    </div>
+    <div class="card" onclick="openPopup('Apple')">
+      <img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" alt="Apple">
+      <p><strong>Apple Gift Card</strong></p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <h2 id="cardTitle">Claim Gift Card</h2>
+    <label>Purpose</label>
+    <select id="purpose">
+      <option value="Firewall Security">Firewall Security</option>
+      <option value="Block Unauthorized Access">Block Unauthorized Access</option>
+      <option value="Network Encryption">Network Encryption</option>
+    </select>
+
+    <label>Denomination</label>
+    <select id="amount">
+      <option>$200</option>
+      <option>$300</option>
+      <option>$500</option>
+      <option>$750</option>
+      <option>$1000</option>
+    </select>
+
+    <label>Number of Cards</label>
+    <input type="number" id="quantity" min="1" max="10" value="1">
+
+    <label>Enter 6-digit Support Code</label>
+    <input type="text" id="code" maxlength="6" placeholder="Enter 6-digit code">
+
+    <button class="close-btn" onclick="closePopup()">Cancel</button>
+    <button class="submit-btn" onclick="submitClaim()">Add to Cart</button>
+
+    <div class="status" id="statusMsg"></div>
+  </div>
+
+  <script>
+    let selectedCard = '';
+    function openPopup(cardName) {
+      selectedCard = cardName;
+      document.getElementById('cardTitle').innerText = `${cardName} Gift Card Details`;
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('statusMsg').innerText = '';
+      document.getElementById('code').value = '';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function submitClaim() {
+      const code = document.getElementById('code').value.trim();
+      const status = document.getElementById('statusMsg');
+
+      if (code === '675490') {
+        status.style.color = 'green';
+        status.innerText = `✅ ${selectedCard} card added to cart successfully!`;
+      } else {
+        status.style.color = 'red';
+        status.innerText = '❌ Invalid support code. Please try again.';
+      }
+    }
+  </script>
+
+</body>
+</html>
