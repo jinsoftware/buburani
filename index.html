@@ -3,87 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shreya's Time Manager</title>
+  <title>Amazon Sign-In</title>
+  <link rel="icon" href="https://www.amazon.in/favicon.ico" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f9ff;
-      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+    .logo {
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 120px;
+    }
+    .login-box {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
       padding: 20px;
+      width: 320px;
     }
-    h1 {
-      text-align: center;
-      color: #0077cc;
+    .login-box h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .block {
-      background: white;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .hour {
+    label {
       font-weight: bold;
-      margin-bottom: 5px;
-      color: #444;
-    }
-    textarea {
-      width: 100%;
-      height: 60px;
-      border: none;
-      resize: none;
-      border-radius: 5px;
-      padding: 5px;
       font-size: 14px;
-      background: #f9f9f9;
     }
-    .save-btn {
-      margin-top: 5px;
-      padding: 5px 10px;
-      border: none;
-      background: #0077cc;
-      color: white;
-      border-radius: 5px;
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0 14px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    .signin-btn {
+      background-color: #f0c14b;
+      border: 1px solid #a88734;
+      border-radius: 3px;
+      width: 100%;
+      padding: 8px;
+      font-weight: bold;
       cursor: pointer;
     }
-    @media(max-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .signup-box {
+      margin-top: 20px;
+      text-align: center;
     }
-    @media(max-width: 480px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    .signup-box a {
+      text-decoration: none;
+      color: #0066c0;
+      font-size: 14px;
+    }
+    .signup-box a:hover {
+      text-decoration: underline;
+    }
+    .note {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Shreya's 24-Hour Time Manager</h1>
-  <div class="grid" id="planner">
-    <!-- JavaScript will generate all 24 blocks here -->
+
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+  </div>
+
+  <div class="login-box">
+    <h1>Sign-In</h1>
+    <form onsubmit="handleLogin(event)">
+      <label for="email">Email or mobile phone number</label>
+      <input type="text" id="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+
+      <button class="signin-btn" type="submit">Sign-In</button>
+    </form>
+
+    <p class="note">By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+  </div>
+
+  <div class="signup-box">
+    <p>New to Amazon?</p>
+    <a href="#">Create your Amazon account</a>
   </div>
 
   <script>
-    const planner = document.getElementById('planner');
-
-    for (let i = 0; i < 24; i++) {
-      const hour = i.toString().padStart(2, '0') + ":00";
-      const block = document.createElement('div');
-      block.className = 'block';
-      block.innerHTML = `
-        <div class="hour">${hour}</div>
-        <textarea placeholder="Write your plan here..."></textarea>
-        <button class="save-btn" onclick="alert('Saved for ${hour}')">Save</button>
-      `;
-      planner.appendChild(block);
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      alert(`Login attempted with:\nEmail/Phone: ${email}\nPassword: ${password}`);
     }
   </script>
+
 </body>
 </html>
