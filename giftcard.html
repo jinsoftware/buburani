@@ -2,202 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Claim Security Gift Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Card Selection</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f3f4f6;
       margin: 0;
-      padding: 20px;
+      background: #f3f3f3;
     }
-    h1 {
-      text-align: center;
-      color: #111827;
-      margin-bottom: 30px;
-    }
-    .grid {
+    header {
+      background-color: #232f3e;
+      padding: 10px 20px;
+      color: white;
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 30px;
+    }
+    .search-bar {
+      margin: 20px auto;
+      max-width: 600px;
+      display: flex;
       justify-content: center;
     }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 220px;
-      text-align: center;
-      cursor: pointer;
-      padding: 15px;
-      transition: transform 0.2s ease;
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
-    .card:hover {
-      transform: scale(1.03);
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
     }
     .card img {
       width: 100%;
       height: 120px;
       object-fit: contain;
-      border-radius: 6px;
       margin-bottom: 10px;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
     }
     .card p {
       font-size: 14px;
-      color: #333;
+      color: #555;
     }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      width: 400px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      z-index: 999;
-    }
-    .popup h2 {
-      margin-top: 0;
-      text-align: center;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    select, input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .buttons {
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .btn {
-      padding: 10px 15px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .cancel-btn {
-      background: #aaa;
+    footer {
+      background-color: #232f3e;
       color: white;
-    }
-    .submit-btn {
-      background: #10b981;
-      color: white;
-    }
-    .status {
-      margin-top: 15px;
       text-align: center;
-      font-weight: bold;
+      padding: 15px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Claim Security Gift Cards</h1>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+    <span>Gift Card Center</span>
+  </header>
 
-  <div class="grid">
-    <div class="card" onclick="openPopup('Target')">
-      <img src="https://logos-world.net/wp-content/uploads/2020/11/Target-Logo.png" alt="Target">
-      <h3>Target Gift Card</h3>
-      <p>Redeemable in all Target stores across USA. Ideal for online security checks.</p>
-    </div>
-    <div class="card" onclick="openPopup('Walmart')">
-      <img src="https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" alt="Walmart">
-      <h3>Walmart Gift Card</h3>
-      <p>Accepted at Walmart online & physical stores. Used in secure tech support.</p>
-    </div>
-    <div class="card" onclick="openPopup('Apple')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-      <h3>Apple Gift Card</h3>
-      <p>For use on Apple devices, App Store, iTunes. Often used in network cleanup.</p>
-    </div>
-    <div class="card" onclick="openPopup('Google Play')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-      <h3>Google Play Card</h3>
-      <p>Works on Android for app purchases and device scan-related apps.</p>
-    </div>
-    <div class="card" onclick="openPopup('Best Buy')">
-      <img src="https://1000logos.net/wp-content/uploads/2021/05/Best-Buy-logo.png" alt="Best Buy">
-      <h3>Best Buy Card</h3>
-      <p>Used to purchase security hardware. Valid at all Best Buy stores USA.</p>
-    </div>
-    <div class="card" onclick="openPopup('Steam')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
-      <h3>Steam Gift Card</h3>
-      <p>Useful in purchasing network defense tools on select Steam platforms.</p>
-    </div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search gift cards..." onkeyup="filterCards()">
   </div>
 
-  <div class="popup" id="popup">
-    <h2 id="popupTitle">Gift Card Claim</h2>
-    <label>Purpose</label>
-    <select id="purpose">
-      <option value="Firewall Setup">Firewall Setup</option>
-      <option value="Block Unauthorized Access">Block Unauthorized Access</option>
-      <option value="Encrypt Local Drive">Encrypt Local Drive</option>
-      <option value="Scan External Devices">Scan External Devices</option>
-    </select>
-
-    <label>Denomination</label>
-    <select id="amount">
-      <option>$200</option>
-      <option>$300</option>
-      <option>$500</option>
-      <option>$750</option>
-      <option>$1000</option>
-    </select>
-
-    <label>Number of Cards</label>
-    <input type="number" id="quantity" min="1" max="10" value="1">
-
-    <label>Enter 6-digit Support Code</label>
-    <input type="text" id="code" maxlength="6" placeholder="e.g. 675490">
-
-    <div class="buttons">
-      <button class="btn cancel-btn" onclick="closePopup()">Cancel</button>
-      <button class="btn submit-btn" onclick="submitClaim()">Add to Cart</button>
-    </div>
-
-    <div class="status" id="statusMsg"></div>
+  <div class="grid" id="cardGrid">
+    <!-- Gift cards will be inserted here -->
   </div>
+
+  <footer>
+    &copy; 2025 MACS Gift Center. All rights reserved.
+  </footer>
 
   <script>
-    let selectedCard = '';
+    const giftCards = [
+      { name: "Amazon", desc: "Redeem on Amazon.com for millions of items.", img: "https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo-768x480.png" },
+      { name: "Walmart", desc: "Valid at Walmart stores and online.", img: "https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" },
+      { name: "Target", desc: "Shop at Target stores and website.", img: "https://logos-world.net/wp-content/uploads/2020/11/Target-Logo.png" },
+      { name: "Apple", desc: "Use on App Store, iTunes, and Apple Store.", img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+      { name: "Google Play", desc: "For Android apps, games, and subscriptions.", img: "https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" },
+      { name: "Steam", desc: "Redeem for PC games on Steam platform.", img: "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" },
+      { name: "Best Buy", desc: "Electronics and tech items at Best Buy.", img: "https://1000logos.net/wp-content/uploads/2021/05/Best-Buy-logo.png" },
+      { name: "eBay", desc: "Use to shop across eBay marketplace.", img: "https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" },
+      { name: "Home Depot", desc: "For home improvement items and tools.", img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/TheHomeDepot.svg" },
+      { name: "Lowe's", desc: "Buy appliances, tools, and more.", img: "https://upload.wikimedia.org/wikipedia/commons/3/32/Lowe%27s_logo.svg" },
+    ];
 
-    function openPopup(cardName) {
-      selectedCard = cardName;
-      document.getElementById('popupTitle').innerText = `${cardName} Gift Card Details`;
-      document.getElementById('popup').style.display = 'block';
-      document.getElementById('code').value = '';
-      document.getElementById('statusMsg').innerText = '';
+    const cardGrid = document.getElementById("cardGrid");
+
+    function displayCards(cards) {
+      cardGrid.innerHTML = "";
+      cards.forEach(card => {
+        const cardDiv = document.createElement("div");
+        cardDiv.className = "card";
+        cardDiv.innerHTML = `
+          <img src="${card.img}" alt="${card.name} logo">
+          <h3>${card.name}</h3>
+          <p>${card.desc}</p>
+        `;
+        cardGrid.appendChild(cardDiv);
+      });
     }
 
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
+    function filterCards() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = giftCards.filter(card => card.name.toLowerCase().includes(query));
+      displayCards(filtered);
     }
 
-    function submitClaim() {
-      const code = document.getElementById('code').value.trim();
-      const status = document.getElementById('statusMsg');
-
-      if (code === '675490') {
-        status.style.color = 'green';
-        status.innerText = `✅ ${selectedCard} card added to cart successfully!`;
-      } else {
-        status.style.color = 'red';
-        status.innerText = '❌ Invalid support code. Please try again.';
-      }
-    }
+    window.onload = () => displayCards(giftCards);
   </script>
 
 </body>
