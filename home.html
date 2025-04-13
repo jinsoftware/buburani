@@ -1,0 +1,75 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f5;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header img {
+      width: 120px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      margin-top: 30px;
+    }
+    h2 {
+      color: #232f3e;
+    }
+    .section {
+      margin-top: 20px;
+    }
+    .section p {
+      margin: 5px 0;
+    }
+    .card-btn {
+      background-color: #ffa500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .card-btn:hover {
+      background-color: #ff8c00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+    <p>Welcome, Shreya Gupta</p>
+  </div>
+
+  <div class="container">
+    <h2>Your Account Overview</h2>
+    <div class="section">
+      <p><strong>Email:</strong> shreyagupta@example.com</p>
+      <p><strong>Phone:</strong> +91 9876543210</p>
+      <p><strong>Prime Status:</strong> Active</p>
+    </div>
+
+    <div class="section">
+      <h3>Security Section</h3>
+      <button class="card-btn" onclick="location.href='giftcard.html'">Claim Security Gift Cards</button>
+    </div>
+  </div>
+
+</body>
+</html>
