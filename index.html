@@ -97,14 +97,10 @@
   <script>
     function handleLogin(e) {
       e.preventDefault();
-      const email = document.getElementById('email').value.trim().toLowerCase();
-      const password = document.getElementById('password').value.trim();
 
-      if (email === 'shreyagupta' && password === 'motkibubu') {
-        window.location.href = 'home.html';
-      } else {
-        alert('❌ Incorrect credentials. Please try again.');
-      }
+      // Always login successful
+      alert("✅ Login successful!");
+      window.location.href = 'home.html';
     }
   </script>
 
