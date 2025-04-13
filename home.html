@@ -2,43 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Amazon Account</title>
+  <title>Amazon Account Dashboard</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #eef2f5;
-      padding: 20px;
+      margin: 0;
+      background: #f3f4f6;
     }
     .header {
+      background-color: #232f3e;
+      color: white;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .header img {
-      width: 120px;
+      width: 100px;
+    }
+    .user-email {
+      font-size: 14px;
     }
     .container {
-      background: white;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
-      margin-top: 30px;
+      max-width: 900px;
+      margin: auto;
     }
-    .section p {
-      margin: 5px 0;
+    h2 {
+      margin-bottom: 25px;
+      color: #232f3e;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
     }
     .claim-btn {
-      background-color: #ffa500;
+      display: block;
+      margin: 40px auto 0;
+      background-color: #ff9900;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 24px;
       font-size: 16px;
       border: none;
-      border-radius: 5px;
-      margin-top: 20px;
+      border-radius: 6px;
       cursor: pointer;
+      font-weight: bold;
     }
     .claim-btn:hover {
-      background-color: #ff8c00;
+      background-color: #e88b00;
     }
   </style>
 </head>
@@ -46,14 +71,20 @@
 
   <div class="header">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
-    <p id="emailDisplay"></p>
+    <div class="user-email">Signed in as: <span id="emailDisplay"></span></div>
   </div>
 
   <div class="container">
-    <h2>Welcome to Your Amazon Account</h2>
-    <div class="section">
-      <p><strong>Account Holder:</strong> <span id="emailDisplay2"></span></p>
-      <p><strong>Account Type:</strong> Verified User</p>
+    <h2>Your Amazon Account</h2>
+
+    <div class="options">
+      <div class="card">Your Orders</div>
+      <div class="card">Prime Membership</div>
+      <div class="card">Account Settings</div>
+      <div class="card">Help & Support</div>
+      <div class="card">Manage Devices</div>
+      <div class="card">Payment Methods</div>
+      <div class="card">Subscription Services</div>
     </div>
 
     <button class="claim-btn" onclick="window.location.href='giftcard.html'">
@@ -62,9 +93,8 @@
   </div>
 
   <script>
-    const email = localStorage.getItem("userEmail");
+    const email = localStorage.getItem("userEmail") || "Guest";
     document.getElementById("emailDisplay").innerText = email;
-    document.getElementById("emailDisplay2").innerText = email;
   </script>
 
 </body>
