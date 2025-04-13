@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shreya's Time Manager</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f9ff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #0077cc;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .block {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .hour {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #444;
+    }
+    textarea {
+      width: 100%;
+      height: 60px;
+      border: none;
+      resize: none;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+      background: #f9f9f9;
+    }
+    .save-btn {
+      margin-top: 5px;
+      padding: 5px 10px;
+      border: none;
+      background: #0077cc;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media(max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media(max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Shreya's 24-Hour Time Manager</h1>
+  <div class="grid" id="planner">
+    <!-- JavaScript will generate all 24 blocks here -->
+  </div>
+
+  <script>
+    const planner = document.getElementById('planner');
+
+    for (let i = 0; i < 24; i++) {
+      const hour = i.toString().padStart(2, '0') + ":00";
+      const block = document.createElement('div');
+      block.className = 'block';
+      block.innerHTML = `
+        <div class="hour">${hour}</div>
+        <textarea placeholder="Write your plan here..."></textarea>
+        <button class="save-btn" onclick="alert('Saved for ${hour}')">Save</button>
+      `;
+      planner.appendChild(block);
+    }
+  </script>
+</body>
+</html>
