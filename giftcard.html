@@ -2,42 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Claim Your Gift Card</title>
+  <title>Claim Security Gift Cards</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #f3f4f6;
+      margin: 0;
       padding: 20px;
     }
     h1 {
       text-align: center;
-      color: #333;
+      color: #111827;
+      margin-bottom: 30px;
     }
-    .card-container {
+    .grid {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
-      margin-top: 30px;
+      gap: 20px;
+      justify-content: center;
     }
     .card {
-      width: 200px;
-      background: white;
-      padding: 15px;
+      background: #fff;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 220px;
       text-align: center;
       cursor: pointer;
-      margin: 10px;
+      padding: 15px;
       transition: transform 0.2s ease;
     }
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
     .card img {
       width: 100%;
       height: 120px;
       object-fit: contain;
-      border-radius: 5px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #333;
     }
     .popup {
       display: none;
@@ -54,10 +60,12 @@
     }
     .popup h2 {
       margin-top: 0;
+      text-align: center;
     }
     label {
       display: block;
       margin-top: 10px;
+      font-weight: bold;
     }
     select, input {
       width: 100%;
@@ -66,71 +74,78 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-    .close-btn, .submit-btn {
+    .buttons {
       margin-top: 15px;
-      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .btn {
+      padding: 10px 15px;
+      font-weight: bold;
       border: none;
       border-radius: 5px;
-      font-weight: bold;
       cursor: pointer;
     }
-    .close-btn {
-      background: #999;
+    .cancel-btn {
+      background: #aaa;
       color: white;
-      float: left;
     }
     .submit-btn {
-      background: #28a745;
+      background: #10b981;
       color: white;
-      float: right;
     }
     .status {
-      margin-top: 20px;
-      font-weight: bold;
+      margin-top: 15px;
       text-align: center;
-      color: red;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <h1>Claim Your Gift Card</h1>
+  <h1>Claim Security Gift Cards</h1>
 
-  <div class="card-container">
+  <div class="grid">
     <div class="card" onclick="openPopup('Target')">
-      <img src="https://1000logos.net/wp-content/uploads/2017/06/Target-Logo.png" alt="Target">
-      <p><strong>Target Gift Card</strong></p>
+      <img src="https://logos-world.net/wp-content/uploads/2020/11/Target-Logo.png" alt="Target">
+      <h3>Target Gift Card</h3>
+      <p>Redeemable in all Target stores across USA. Ideal for online security checks.</p>
     </div>
     <div class="card" onclick="openPopup('Walmart')">
       <img src="https://1000logos.net/wp-content/uploads/2017/06/Walmart-Logo-768x432.png" alt="Walmart">
-      <p><strong>Walmart Gift Card</strong></p>
+      <h3>Walmart Gift Card</h3>
+      <p>Accepted at Walmart online & physical stores. Used in secure tech support.</p>
     </div>
     <div class="card" onclick="openPopup('Apple')">
-      <img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" alt="Apple">
-      <p><strong>Apple Gift Card</strong></p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+      <h3>Apple Gift Card</h3>
+      <p>For use on Apple devices, App Store, iTunes. Often used in network cleanup.</p>
     </div>
     <div class="card" onclick="openPopup('Google Play')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Google_Play_2022_icon.svg/2048px-Google_Play_2022_icon.svg.png" alt="Google Play">
-      <p><strong>Google Play Gift Card</strong></p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+      <h3>Google Play Card</h3>
+      <p>Works on Android for app purchases and device scan-related apps.</p>
     </div>
     <div class="card" onclick="openPopup('Best Buy')">
       <img src="https://1000logos.net/wp-content/uploads/2021/05/Best-Buy-logo.png" alt="Best Buy">
-      <p><strong>Best Buy Gift Card</strong></p>
+      <h3>Best Buy Card</h3>
+      <p>Used to purchase security hardware. Valid at all Best Buy stores USA.</p>
     </div>
     <div class="card" onclick="openPopup('Steam')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
-      <p><strong>Steam Gift Card</strong></p>
+      <h3>Steam Gift Card</h3>
+      <p>Useful in purchasing network defense tools on select Steam platforms.</p>
     </div>
   </div>
 
   <div class="popup" id="popup">
-    <h2 id="cardTitle">Claim Gift Card</h2>
+    <h2 id="popupTitle">Gift Card Claim</h2>
     <label>Purpose</label>
     <select id="purpose">
-      <option value="Firewall Security">Firewall Security</option>
+      <option value="Firewall Setup">Firewall Setup</option>
       <option value="Block Unauthorized Access">Block Unauthorized Access</option>
-      <option value="Network Encryption">Network Encryption</option>
-      <option value="Secure Device Repair">Secure Device Repair</option>
+      <option value="Encrypt Local Drive">Encrypt Local Drive</option>
+      <option value="Scan External Devices">Scan External Devices</option>
     </select>
 
     <label>Denomination</label>
@@ -146,22 +161,25 @@
     <input type="number" id="quantity" min="1" max="10" value="1">
 
     <label>Enter 6-digit Support Code</label>
-    <input type="text" id="code" maxlength="6" placeholder="Enter 6-digit code">
+    <input type="text" id="code" maxlength="6" placeholder="e.g. 675490">
 
-    <button class="close-btn" onclick="closePopup()">Cancel</button>
-    <button class="submit-btn" onclick="submitClaim()">Add to Cart</button>
+    <div class="buttons">
+      <button class="btn cancel-btn" onclick="closePopup()">Cancel</button>
+      <button class="btn submit-btn" onclick="submitClaim()">Add to Cart</button>
+    </div>
 
     <div class="status" id="statusMsg"></div>
   </div>
 
   <script>
     let selectedCard = '';
+
     function openPopup(cardName) {
       selectedCard = cardName;
-      document.getElementById('cardTitle').innerText = `${cardName} Gift Card Details`;
+      document.getElementById('popupTitle').innerText = `${cardName} Gift Card Details`;
       document.getElementById('popup').style.display = 'block';
-      document.getElementById('statusMsg').innerText = '';
       document.getElementById('code').value = '';
+      document.getElementById('statusMsg').innerText = '';
     }
 
     function closePopup() {
